@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<div class="row justify-content-center p-2">
+    <div  *ngFor="let item of divisions" class="col-5 m-1">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{item?.title}}</mat-card-title>
+              <mat-card-subtitle>{{item?.subtitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <button [routerLink]="'/auth/division/'+item.id" mat-button>VISUALIZAR</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+</div>
