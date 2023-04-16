@@ -4,7 +4,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button (click)="authService.logOut()" mat-menu-item>
       <!-- <mat-icon>dialpad</mat-icon> -->
       <span>Sair</span>
     </button>

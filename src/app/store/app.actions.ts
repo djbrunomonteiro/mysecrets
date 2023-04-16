@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { Action, createAction } from '@ngrx/store';
 
 export enum EGroup {
     Division = "Division",
@@ -32,6 +32,8 @@ export enum EAction {
     DeleteOneError = "DeleteOneError"
 
 }
+
+export const logoutAction = createAction('CLEAR_STATE');
 
 export interface IAction {
     group: EGroup,

@@ -9,6 +9,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
     
   ],
   exports: [
@@ -34,7 +36,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialSharedModule { }

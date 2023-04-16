@@ -1,4 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { ActionReducer, MetaReducer } from "@ngrx/store";
 import { EAction, EGroup, IMyAction } from "./app.actions";
 
 export interface AppState extends EntityState<any> { };
@@ -46,5 +47,18 @@ export class actionsReducer {
         }
     }
 
+    public static clearState(reducer: ActionReducer<any>): ActionReducer<any> {
+        return function(state: any, action: IMyAction) {
+            console.log(action.type);
+          if (action.type === 'CLEAR_STATE') {
+            state = undefined;
+          }
+
+          
+          return reducer(state, action);
+        };
+    }
 
 }
+
+export const  metaReducers: MetaReducer<any>[] = [actionsReducer.clearState];
