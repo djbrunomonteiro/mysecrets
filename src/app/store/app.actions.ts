@@ -2,7 +2,8 @@ import { Action } from '@ngrx/store';
 
 export enum EGroup {
     Division = "Division",
-    Item = "Item"
+    Item = "Item",
+    User = "User"
 }
 
 export enum EAction {

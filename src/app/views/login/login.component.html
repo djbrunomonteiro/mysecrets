@@ -1,7 +1,34 @@
-<div class="row m-0  justify-content-center">
-    <div class="col-6">
-        <mat-card>
-            <mat-card-content>Simple card</mat-card-content>
-          </mat-card>
-    </div>
+<div class="row m-0  justify-content-center align-items-center h-75">
+  <div [ngClass]="(utilsService.screenWidth$ | async) <= 720 ?  'col-12' : 'col-6'">
+    <mat-card [formGroup]="form">
+      <mat-card-header class="mb-2">
+        <mat-card-title>Área Restrita</mat-card-title>
+        <mat-card-subtitle>Acesso somente pelo admin</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="row">
+          <div class="col-12">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="email@example.com" formControlName="email">
+              <mat-error></mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <button [disabled]="form.invalid" class="w-100" mat-raised-button color="accent">Acessar</button>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

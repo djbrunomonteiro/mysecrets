@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { UtilsService } from './services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mysecrets';
+
+  constructor(private utilsService: UtilsService){
+    this.utilsService.setWindows();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.utilsService.setWindows();
+  }
+  
 }

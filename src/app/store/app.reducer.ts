@@ -9,6 +9,17 @@ export const inititalState = adapter.getInitialState({})
 
 export class actionsReducer {
 
+    public static UserReducer = (state = inititalState, action: IMyAction) => {
+        switch (action.type) {
+            case `[${EGroup.User}-${EAction.SetOneStore}]`:
+                return adapter.setOne(action.props, state);
+            case `[${EGroup.User}-${EAction.DeleteOne}]`:
+                return adapter.removeOne(action.props, state);
+            default:
+                return state;
+        }
+    }
+
     public static DivisionReducer = (state = inititalState, action: IMyAction) => {
         switch (action.type) {
             case `[${EGroup.Division}-${EAction.SetAll}]`:
