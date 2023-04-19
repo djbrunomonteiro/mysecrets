@@ -15,7 +15,6 @@ export class AppComponent {
     private authService: AuthService
     ){
     this.utilsService.setWindows();
-    this.authService.checkAuth();
   }
 
   @HostListener('window:resize', ['$event'])

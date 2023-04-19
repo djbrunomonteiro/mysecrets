@@ -11,7 +11,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword
 } from 'firebase/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { logoutAction } from '../store/app.actions';
 
 @Injectable({
@@ -20,7 +20,8 @@ import { logoutAction } from '../store/app.actions';
 export class AuthService {
 
   auth: any;
-  authenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  authenticated$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  authenticated = false;
 
   constructor(
     public firestore: Firestore,
@@ -28,7 +29,6 @@ export class AuthService {
     private router: Router
   ) {
     this.auth = getAuth();
-    this.checkAuth();
   }
 
   signIn(email: any, password: any ) {
@@ -37,17 +37,9 @@ export class AuthService {
   
   logOut(){
     signOut(this.auth).then(res => {
-      this.store.dispatch(logoutAction())
+      this.store.dispatch(logoutAction());
+      this.router.navigate(['/login'])
     })
   }
 
-  checkAuth(){
-    return onAuthStateChanged(this.auth, (user) => {
-      if (user) {
-        this.authenticated$.next(true)
-      } else {
-        this.authenticated$.next(false)
-      }
-    });
-  }
 }
