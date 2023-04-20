@@ -1,30 +1,42 @@
-
-
 <ng-container [ngSwitch]="data?.type">
     <ng-container *ngSwitchCase="'/auth/divisions'">
         <form [formGroup]="firstFormGroup">
             <div class="row container-dialog p-2 m-0">
                 <div class="col p-2">
+                    <h3 class="text-center">Dados do Item</h3>
+                    <h5>Nome do Item</h5>
 
-                    <h5>Nome da divisão</h5>
-                    <mat-form-field appearance="fill" class="w-100">
-                        <mat-label>Selecione as Opções</mat-label>
-                        <mat-select >
-                          <mat-option class="text-uppercase" *ngFor="let option of options" [value]="option">{{option}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-
-                      <h5>Descrição</h5>
-
-                    <!-- <ng-template >Fill out your name</ng-template> -->
                     <mat-form-field class="w-100">
-                      <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                        <input matInput placeholder="nome..." formControlName="firstCtrl" required>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Selecione Categoria</mat-label>
+                        <mat-select>
+                            <mat-option class="text-uppercase" *ngFor="let option of options"
+                                [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <h5>Tipo</h5>
+
+                    <mat-radio-group >
+                        <mat-radio-button *ngFor="let type of types" [value]="type">
+                            {{type}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+
+                    <h5>Descrição</h5>
+
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
                     </mat-form-field>
 
                 </div>
             </div>
 
-          </form>
+        </form>
 
     </ng-container>
 
@@ -32,6 +44,6 @@
 
 
 
-  <!-- <button class="container-float-btn" mat-fab color="primary">
+<!-- <button class="container-float-btn" mat-fab color="primary">
     <mat-icon>note_add</mat-icon>
   </button> -->

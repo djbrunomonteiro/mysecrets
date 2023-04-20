@@ -13,6 +13,8 @@ export class EditComponent implements OnInit{
   options = ['pessoal', 'bancos', 'casa', 'sites', 'trabalho', 'estudo', 'medico', 'outros']
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+
+  types = ['login', 'doc', 'txt']
   
   constructor(
     private _formBuilder: FormBuilder,

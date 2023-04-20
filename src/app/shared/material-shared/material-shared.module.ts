@@ -13,6 +13,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -30,7 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSnackBarModule,
     MatButtonToggleModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
     
     
   ],
@@ -47,7 +49,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSnackBarModule,
     MatButtonToggleModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatRadioModule
   ]
 })
 export class MaterialSharedModule { }

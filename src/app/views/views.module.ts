@@ -3,21 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { ViewsRoutingModule } from './views-routing.module';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialSharedModule } from '../shared/material-shared/material-shared.module';
-import { DivisionComponent } from './division/division.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ListComponent } from './divisions/list/list.component';
 import { EditComponent } from './divisions/edit/edit.component';
+import { ItensComponent } from './divisions/itens/itens.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    DashboardComponent,
-    DivisionComponent,
     ListComponent,
-    EditComponent
+    EditComponent,
+    ItensComponent
   ],
   imports: [
     CommonModule,

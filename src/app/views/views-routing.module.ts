@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DivisionComponent } from './division/division.component';
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './divisions/list/list.component';
 import { EditComponent } from './divisions/edit/edit.component';
+import { ItensComponent } from './divisions/itens/itens.component';
 
 const routes: Routes = [
   {
@@ -17,16 +16,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children:[
       {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'division/:id',
-        component: DivisionComponent
-      },
-      {
         path: 'divisions',
         component: ListComponent
+      },
+      {
+        path: 'divisions/itens/:id',
+        component: ItensComponent
       },
       {
         path: 'divisions/edit',
@@ -36,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/auth/dashboard',
+    redirectTo: '/auth/divisions',
     pathMatch: 'full'
   }
 ];
