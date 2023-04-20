@@ -4,6 +4,8 @@ import { AuthGuard } from '../guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DivisionComponent } from './division/division.component';
 import { LoginComponent } from './login/login.component';
+import { ListComponent } from './divisions/list/list.component';
+import { EditComponent } from './divisions/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,14 @@ const routes: Routes = [
       {
         path: 'division/:id',
         component: DivisionComponent
+      },
+      {
+        path: 'divisions',
+        component: ListComponent
+      },
+      {
+        path: 'divisions/edit',
+        component: EditComponent
       },
     ]
   },

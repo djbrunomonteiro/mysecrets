@@ -47,6 +47,19 @@ export class actionsReducer {
         }
     }
 
+    public static OptDivisionReducer = (state = inititalState, action: IMyAction) => {
+        switch (action.type) {
+            case `[${EGroup.OptDivision}-${EAction.SetAll}]`:
+                return adapter.upsertMany(action.props, state);
+            case `[${EGroup.OptDivision}-${EAction.SetOneStore}]`:
+                return adapter.setOne(action.props, state);
+            case `[${EGroup.OptDivision}-${EAction.DeleteOne}]`:
+                return adapter.removeOne(action.props, state);
+            default:
+                return state;
+        }
+    }
+
     public static clearState(reducer: ActionReducer<any>): ActionReducer<any> {
         return function(state: any, action: IMyAction) {
             console.log(action.type);

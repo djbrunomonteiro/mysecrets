@@ -3,7 +3,8 @@ import { Action, createAction } from '@ngrx/store';
 export enum EGroup {
     Division = "Division",
     Item = "Item",
-    User = "User"
+    User = "User",
+    OptDivision = "OptDivision",
 }
 
 export enum EAction {

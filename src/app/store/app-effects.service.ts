@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { getAction } from './app.actions';
+import { EAction, EGroup, appActions, getAction } from './app.actions';
+import { switchMap, combineLatestAll, map } from 'rxjs/operators';
+import { CoreService } from '../services/core.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,32 @@ export class AppEffectsService {
   constructor(
     private store: Store,
     private actions$: Actions,
+    private coreService: CoreService
   ) { }
 
-    //***Inicio Effects Coleções***//
+  //**OPT DIVISIONS */
+
+  getAllOptions = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAction(EGroup.OptDivision, EAction.GetAll)),
+      switchMap((action: any) => {
+        return this.coreService.getCollection(action?.params?.collection).pipe(
+          map((res: any) => {
+            console.log('ress', res);
+            if(res?.length){
+              this.store.dispatch(appActions({ group: EGroup.OptDivision, action: EAction.SetAll, props: res }))
+
+            }
+            
+            return res;
+          })
+        );
+      }),
+      map(() => appActions({ group: EGroup.OptDivision, action: EAction.GetAllSucess}))
+    )
+  );
+
+  //***Inicio Effects Coleções***//
 
 
   // getOneColecao = createEffect(() =>

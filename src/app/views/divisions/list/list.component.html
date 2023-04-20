@@ -1,0 +1,13 @@
+<div class="row m-0 justify-content-center p-2" *ngIf=" (optDivision$ | async) as options">
+    <div  *ngFor="let item of options" class="col-6 my-1">
+        <mat-card class="container-btn" [routerLink]="'/auth/division/'+item?.id">
+            <mat-card-header >
+              <mat-card-title class="text-capitalize">{{item?.name}}</mat-card-title>
+              <mat-card-subtitle>{{item?.description}}</mat-card-subtitle>
+            </mat-card-header>
+            <!-- <mat-card-actions>
+              <button [routerLink]="'/auth/division/'+item?.id" mat-button>VISUALIZAR</button>
+            </mat-card-actions> -->
+          </mat-card>
+    </div>
+</div>

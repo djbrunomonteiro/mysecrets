@@ -2,3 +2,14 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container-float-btn{
+    position: fixed !important;
+    align-content: center;
+    justify-content: end;
+    bottom: 20px;
+    right: 10px;
+    width: 100%;
+    height: 20px;
+    background-color: red;
+}

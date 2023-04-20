@@ -19,6 +19,7 @@ import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
 import { getDatabase } from '@firebase/database';
 import { actionsReducer, metaReducers } from './store/app.reducer';
+import { MaterialSharedModule } from './shared/material-shared/material-shared.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { actionsReducer, metaReducers } from './store/app.reducer';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    MaterialSharedModule,
     StoreModule.forRoot(appReducers, {metaReducers}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([

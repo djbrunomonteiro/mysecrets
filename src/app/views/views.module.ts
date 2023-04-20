@@ -8,12 +8,16 @@ import { MaterialSharedModule } from '../shared/material-shared/material-shared.
 import { DivisionComponent } from './division/division.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ListComponent } from './divisions/list/list.component';
+import { EditComponent } from './divisions/edit/edit.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     DashboardComponent,
-    DivisionComponent
+    DivisionComponent,
+    ListComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

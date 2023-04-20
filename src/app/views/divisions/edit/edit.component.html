@@ -1,0 +1,37 @@
+
+
+<ng-container [ngSwitch]="data?.type">
+    <ng-container *ngSwitchCase="'/auth/divisions'">
+        <form [formGroup]="firstFormGroup">
+            <div class="row container-dialog p-2 m-0">
+                <div class="col p-2">
+
+                    <h5>Nome da divisão</h5>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Selecione as Opções</mat-label>
+                        <mat-select >
+                          <mat-option class="text-uppercase" *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <h5>Descrição</h5>
+
+                    <!-- <ng-template >Fill out your name</ng-template> -->
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                    </mat-form-field>
+
+                </div>
+            </div>
+
+          </form>
+
+    </ng-container>
+
+</ng-container>
+
+
+
+  <!-- <button class="container-float-btn" mat-fab color="primary">
+    <mat-icon>note_add</mat-icon>
+  </button> -->
