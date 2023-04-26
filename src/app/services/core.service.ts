@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, getDocs } from '@angular/fire/firestore';
+import { Firestore, addDoc, getDocs } from '@angular/fire/firestore';
 import { collection, doc, setDoc } from "firebase/firestore";
 import { Observable, from, of } from 'rxjs';
 import { UtilsService } from './utils.service';
@@ -27,6 +27,15 @@ export class CoreService {
 
       })
     ) 
- 
+  }
+
+  addItem(data: object): Observable<any>{
+    return from(
+      new Promise(async (resolve: any) =>{
+        const docRef = await addDoc(collection(this.firestore, 'itens'), data)
+        resolve(docRef)
+      })
+    )
+
   }
 }

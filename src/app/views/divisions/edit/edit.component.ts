@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CoreService } from 'src/app/services/core.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class EditComponent implements OnInit {
   types = ['log', 'file', 'txt'];
   form = this._formBuilder.group({
     id: [''],
-    name: [''],
+    name: ['', [Validators.required]],
     category: [''],
     type: ['log'],
     data_sheet: this._formBuilder.array([])
@@ -27,6 +28,7 @@ export class EditComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
+    private _coreService:CoreService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
   }
@@ -68,22 +70,20 @@ export class EditComponent implements OnInit {
             describe: ['']
           })
         );
-
-        
-        
-
-
     }
-
-    console.log('apos', this.form.value);
-
-
   }
 
   removeInput(){
     const result = (this.controlRef.value as any[]).filter(elem => elem?.type === this.form.value.type);
     this.controlRef.clear(); //remove todos os controles de dentro do array
     this.controlRef.controls = result
+  }
+
+  saveItem(){
+    this._coreService.addItem(this.form.value).subscribe(res =>{
+      console.log('ress', res);
+      
+    })
 
   }
 
