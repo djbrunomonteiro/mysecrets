@@ -1,19 +1,19 @@
 <ng-container [ngSwitch]="data?.type">
     <ng-container *ngSwitchCase="'/auth/divisions'">
-        <form [formGroup]="firstFormGroup">
+        <form [formGroup]="form">
             <div class="row container-dialog p-2 m-0">
                 <div class="col p-2">
                     <h3 class="text-center">Dados do Item</h3>
                     <h5>Nome do Item</h5>
 
                     <mat-form-field class="w-100">
-                        <input matInput placeholder="nome..." formControlName="firstCtrl" required>
+                        <input matInput placeholder="nome..." formControlName="name" required>
                     </mat-form-field>
 
 
                     <mat-form-field appearance="fill" class="w-100">
                         <mat-label>Selecione Categoria</mat-label>
-                        <mat-select>
+                        <mat-select formControlName="category">
                             <mat-option class="text-uppercase" *ngFor="let option of options"
                                 [value]="option">{{option}}</mat-option>
                         </mat-select>
@@ -21,17 +21,63 @@
 
                     <h5>Tipo</h5>
 
-                    <mat-radio-group >
+                    <mat-radio-group formControlName="type" (change)="addInput()">
                         <mat-radio-button *ngFor="let type of types" [value]="type">
                             {{type}}
                         </mat-radio-button>
                     </mat-radio-group>
+                    <ng-container formArrayName="data_sheet">
+                        <ng-container [ngSwitch]="form.value.type">
+                            <ng-container *ngSwitchCase="'log'">
+                                <ng-container *ngFor="let item of controlRef?.controls; index as i">
+                                    <ng-container [formGroupName]="i">
+                                        <mat-divider class="my-2"></mat-divider>
+                                        <p>Login {{i+1}} </p>
+                                        <mat-form-field class="w-100" >
+                                            <input formControlName="log" matInput>
+                                        </mat-form-field>
+                                        <p>Password</p>
+                                        <mat-form-field class="w-100" >
+                                            <input formControlName="pass" matInput>
+                                        </mat-form-field>
+                                        <p>Descrição</p>
+                                        <mat-form-field class="w-100" >
+                                            <input formControlName="describe" matInput>
+                                        </mat-form-field>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                            <ng-container *ngSwitchCase="'file'">
+                                <ng-container *ngFor="let item of controlRef?.controls; index as i">
+                                    <ng-container [formGroupName]="i">
+                                        <mat-divider class="my-2"></mat-divider>
+                                        <p>File {{i+1}}</p>
+                                        <mat-form-field class="w-100" >
+                                            <input formControlName="file" matInput>
+                                        </mat-form-field>
+                                        <p>Descrição</p>
+                                        <mat-form-field class="w-100" >
+                                            <input formControlName="describe" matInput>
+                                        </mat-form-field>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                            <ng-container *ngSwitchDefault>
+                                <ng-container *ngFor="let item of controlRef?.controls; index as i">
+                                    <ng-container [formGroupName]="i">
+                                        <mat-divider class="my-2"></mat-divider>
+                                        <p>Descrição {{i+1}}</p>
+                                        <mat-form-field class="w-100" >
+                                            <input formControlName="describe" matInput>
+                                        </mat-form-field>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
 
-                    <h5>Descrição</h5>
+                    </ng-container>
 
-                    <mat-form-field class="w-100">
-                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                    </mat-form-field>
+                    <button (click)="addInput(false)" class="w-100 mt-2" mat-raised-button color="primary">Salvar</button>
 
                 </div>
             </div>

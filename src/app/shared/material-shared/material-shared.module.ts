@@ -14,6 +14,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -32,7 +33,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonToggleModule,
     MatDialogModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
     
     
   ],
@@ -50,7 +52,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonToggleModule,
     MatDialogModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDividerModule
   ]
 })
 export class MaterialSharedModule { }
